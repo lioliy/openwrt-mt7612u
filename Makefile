@@ -6,6 +6,7 @@
 #
 
 include $(TOPDIR)/rules.mk
+include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=mt7612u
 PKG_VERSION:=2.2.2
@@ -20,7 +21,6 @@ PKG_BUILD_PARALLEL:=1
 PKG_MAINTAINER:=lioliy <lioliy@my.com>
 PKG_LICENSE:=GPLv2
 
-include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/package.mk
 
 MAKE_OPTS:= \
