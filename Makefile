@@ -9,13 +9,12 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=mt7612u
-PKG_VERSION:=1.0.0
-PKG_RELEASE:=1
+PKG_VERSION:=2.2.2
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/ulli-kroll/mt7612u.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=a4265cca30130deb7be04a8ff65a918e795bf78c
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 
 PKG_BUILD_PARALLEL:=1
@@ -30,7 +29,7 @@ define KernelPackage/mt7612u
 	SUBMENU:=Wireless Drivers
 	TITLE:=Driver for mt7612u wireless adapters
 	FILES:=$(PKG_BUILD_DIR)/mt7612u.$(LINUX_KMOD_SUFFIX)
-	DEPENDS:=+wireless-tools +kmod-mac80211 @USB_SUPPORT @LINUX_3_X
+	DEPENDS:=+wireless-tools +kmod-mac80211 @USB_SUPPORT
 	AUTOLOAD:=$(call AutoProbe,mt7612u)
 endef
 
