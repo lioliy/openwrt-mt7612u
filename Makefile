@@ -11,7 +11,7 @@ include $(INCLUDE_DIR)/kernel.mk
 PKG_NAME:=mt7612u
 PKG_VERSION:=2.2.2
 PKG_RELEASE:=3
-
+PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/ulli-kroll/mt7612u.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
@@ -37,14 +37,9 @@ define KernelPackage/mt7612u/description
   This package contains a rewritten driver for usb wireless adapters based on the mediatek mt7612u chip by kuba-moo
 endef
 
-mt7612u_MAKEOPTS= -C $(PKG_BUILD_DIR) \
-	KERNELRELEASE="$(LINUX_VERSION)" \
-	KDIR="(KERNEL_BUILD_DIR)" \
-	TARGET="$(HAL_TARGET)" \
-	ARCH="$(LINUX_KARCH)"
-
 define Build/Compile
-	$(MAKE) $(mt7612u_MAKEOPTS)
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+	CROSS_COMPILE=$(TARGET_CROSS)
 endef
 
 define KernelPackage/mt7612u/install
