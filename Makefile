@@ -35,7 +35,7 @@ define KernelPackage/mt7612u
 endef
 
 define KernelPackage/mt7612u/description
-  This package contains a rewritten driver for usb wireless adapters based on the mediatek mt7612u chip by kuba-moo
+  This package contains a rewritten driver for usb wireless adapters based on the mediatek mt7612u chip by ulli-kroll
 endef
 
 define Build/Compile
